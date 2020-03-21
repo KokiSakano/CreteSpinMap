@@ -4,7 +4,7 @@ class GSS:
     def __init__(self, N, T):
         # lattice siza
         self.N = N
-        # tempreture list
+        # temperature list
         self.T = T
         # generate N*N spin state by random
         self.state = 2 * np.random.randint(0, 2, (self.N, self.N)) - 1
@@ -21,7 +21,7 @@ class GSS:
         new_state[x, y] *= -1
         return new_state, x, y
 
-    # calc specious spin state by metoropolice method
+    # calc specious spin state by metropolis method
     def calc_spin_state(self, t):
         n = 10000
         for i in range(n):
@@ -33,14 +33,14 @@ class GSS:
             if np.random.rand() <= np.exp(-deltaH/t):
                 self.state = new_state
 
-    def calc_each_tempreture(self):
+    def calc_each_temperature(self):
         # save spin state
         X = []
         for t in self.T:
             # init spin state
             self.state = 2 * np.random.randint(0, 2, (self.N, self.N)) - 1
-            # generate spin state which tempreture t
+            # generate spin state which temperature t
             self.calc_spin_state(t)
-            # append generate spin state which tempreture t
+            # append generate spin state which temperature t
             X.append(self.state)
         return np.array(X)

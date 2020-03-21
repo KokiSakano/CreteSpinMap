@@ -18,10 +18,10 @@ N = 32
 # number of data (square lattice)
 count = 100
 
-# tempreturelist
+# temperature list
 T_list = np.linspace(0.1, 5.5, count)
 
-# make gif which write spin state trainsition
+# make gif which write spin state transition
 def create_spinmap_gif(data, T, save_path):
     save_path = save_path + "squarelattice.gif"
     fig = plt.figure()
@@ -39,7 +39,7 @@ def create_spinmap_gif(data, T, save_path):
 GSS = GenerateSpinState.GSS(N, T_list)
 
 # create spin map
-X_train = GSS.calc_each_tempreture()
+X_train = GSS.calc_each_temperature()
 
 # create gif
 create_spinmap_gif(X_train, T_list, spin_map_path)
